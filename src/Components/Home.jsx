@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./Navbar";
 
 const Home = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -45,7 +44,6 @@ const Home = () => {
 
   return (
     <div className="bg-green-500 min-h-screen">
-      <NavBar />
       <div className="container mx-auto p-8">
         <h1 className="text-3xl font-bold text-white mb-8">
           Featured Playlists

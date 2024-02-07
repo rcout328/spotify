@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import NavBar from "./Navbar";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa"; // Import the search icon
 
@@ -118,7 +117,6 @@ const Search = () => {
 
   return (
     <div className="bg-green-500 min-h-screen">
-      <NavBar />
       <div className="container mx-auto p-8">
         <div className="relative">
           <input
