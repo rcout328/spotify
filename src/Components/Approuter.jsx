@@ -8,6 +8,7 @@ import Musicm from "./Musicm";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 import NavBar from "./Navbar";
 import NavBar1 from "./Navbar1";
+import DarkProvider from "./Context/DarkProvider";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -107,7 +108,9 @@ const router = createBrowserRouter([
 const Approuter = () => {
   return (
     <div>
-      <RouterProvider router={router} />
+      <DarkProvider>
+        <RouterProvider router={router} />
+      </DarkProvider>
     </div>
   );
 };

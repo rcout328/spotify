@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { DarkContext } from "./Context/DarkProvider";
 
 const Home = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -41,11 +42,16 @@ const Home = () => {
 
     fetchSpotifyData();
   }, []);
+  const [dark] = useContext(DarkContext);
 
   return (
-    <div className="bg-green-500 min-h-screen">
+    <div className={`${dark ? "bg-black" : "bg-white"} min-h-screen`}>
       <div className="container mx-auto p-8">
-        <h1 className="text-3xl font-bold text-white mb-8">
+        <h1
+          className={`text-3xl font-bold ${
+            dark ? "text-white" : "text-black"
+          } mb-8`}
+        >
           Featured Playlists
         </h1>
 
@@ -55,7 +61,9 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {playlists.map((playlist, index) => (
               <Link to={`/playlist/${playlist.id}`} key={index}>
-                <div className="bg-white p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:bg-gray-100">
+                <div
+                  className={`bg-white p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:bg-gray-100`}
+                >
                   <img
                     src={playlist.images[0].url}
                     alt={playlist.name}

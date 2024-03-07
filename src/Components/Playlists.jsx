@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { DarkContext } from "./Context/DarkProvider";
 
 const PlaylistPage = () => {
   const [playlist, setPlaylist] = useState(null);
   const { playlistId } = useParams();
   const [loading, setLoading] = useState(true);
-
+  const [dark, setDark] = useContext(DarkContext);
   useEffect(() => {
     const fetchPlaylistData = async () => {
       const clientId = "2faf64caa82f4690a4a382f588de0616";
@@ -46,9 +47,20 @@ const PlaylistPage = () => {
   }, [playlistId]);
 
   return (
-    <div className="bg-green-500 min-h-screen">
-      <div className="container mx-auto p-8 hover:shadow-lg transition duration-300">
-        <Link to="/" className="text-white mb-4 block">
+    <div
+      className={`min-h-screen ${
+        dark ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
+      <div
+        className={`container mx-auto p-8 hover:shadow-lg transition duration-300 ${
+          dark ? "bg-black text-white" : "bg-white text-black"
+        }`}
+      >
+        <Link
+          to="/"
+          className={`${dark ? "text-white" : "text-black"} mb-4 block`}
+        >
           {/* Back Button */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +79,7 @@ const PlaylistPage = () => {
           Back to Home
         </Link>
         {loading ? (
-          <p className="text-white">Loading...</p>
+          <p className={`${dark ? "text-white" : "text-black"} `}>Loading...</p>
         ) : playlist ? (
           <div>
             <div className="mb-8">
@@ -77,10 +89,16 @@ const PlaylistPage = () => {
                 className="w-full h-64 object-cover rounded-md shadow-md"
               />
             </div>
-            <h1 className="text-3xl font-bold text-white mb-4">
+            <h1
+              className={`text-3xl font-bold ${
+                dark ? "text-white" : "text-black"
+              } mb-4`}
+            >
               {playlist.name}
             </h1>
-            <p className="text-sm text-gray-300 mb-6">{playlist.description}</p>
+            <p className={`text-sm ${dark ? "text-white" : "text-black"} mb-6`}>
+              {playlist.description}
+            </p>
 
             <h2 className="text-xl font-semibold text-white mb-2">Tracks</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

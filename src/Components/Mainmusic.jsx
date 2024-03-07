@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactAudioPlayer from "react-audio-player";
+import { DarkContext } from "./Context/DarkProvider";
 
 const Mainmusic = () => {
   const [music, setMusic] = useState(null);
   const { _musicId } = useParams();
   const [loading, setLoading] = useState(true);
+  const [dark] = useContext(DarkContext);
 
   useEffect(() => {
     const fetchTrackData = async () => {
@@ -47,7 +49,11 @@ const Mainmusic = () => {
   }, [_musicId]);
 
   return (
-    <div className="bg-green-500 min-h-screen flex flex-col items-center justify-center">
+    <div
+      className={`min-h-screen flex flex-col items-center justify-center ${
+        dark ? "bg-black" : "bg-white"
+      }`}
+    >
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md transition duration-300 transform hover:scale-105">
         <Link
           to={`/`}
