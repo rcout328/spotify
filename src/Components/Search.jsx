@@ -4,6 +4,7 @@ import axios from "axios";
 const Search = () => {
   const [message, setMessage] = useState("");
   const [predictedResult, setPredictedResult] = useState("");
+  const [error, setError] = useState(""); // New state for error messages
 
   const predictMessage = async () => {
     try {
@@ -11,8 +12,11 @@ const Search = () => {
         message: message,
       });
       setPredictedResult(response.data.predicted_result);
+      setError(""); // Clear any previous error
     } catch (error) {
       console.error("Error fetching data:", error);
+      setError("Error fetching data. Please try again."); // Set error message
+      setPredictedResult(""); // Clear previous prediction result
     }
   };
 
@@ -34,7 +38,6 @@ const Search = () => {
           fontFamily: "Arial, sans-serif",
         }}
       />
-
       <button
         style={{
           padding: 10,
@@ -47,7 +50,8 @@ const Search = () => {
       >
         Predict
       </button>
-
+      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
+      {/* Display error message in red */}
       {predictedResult && <p>Predicted result: {predictedResult}</p>}
     </div>
   );
