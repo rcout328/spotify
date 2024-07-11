@@ -1,13 +1,7 @@
 import { Link } from "react-router-dom";
 import { SignInButton } from "@clerk/clerk-react";
-import { useContext } from "react";
-import { DarkContext } from "./Context/DarkProvider";
-const NavBar1 = () => {
-  const [dark, setDark] = useContext(DarkContext);
 
-  const toggle = () => {
-    setDark(!dark);
-  };
+const NavBar1 = () => {
   return (
     <nav className="p-4 flex justify-between items-center bg-white">
       <Link to="/" className="text-green-500 font-bold text-4xl">
@@ -20,6 +14,9 @@ const NavBar1 = () => {
 
         <Link to="/search" className="text-green-500">
           Search
+        </Link>
+        <Link to="/sss" className="text-green-500">
+          Searc111
         </Link>
         <SignInButton />
       </div>

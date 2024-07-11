@@ -35,6 +35,9 @@ const NavBar = () => {
             showName={false} // Set to true if you want to display the user's name
           />
         </div>
+        <Link to="/sss" className="text-green-500">
+          Search11
+        </Link>
       </ul>
     </div>
   );

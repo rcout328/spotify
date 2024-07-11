@@ -9,6 +9,7 @@ import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 import NavBar from "./Navbar";
 import NavBar1 from "./Navbar1";
 import DarkProvider from "./Context/DarkProvider";
+import SS from "./ss";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
         </SignedIn>
       </div>
     ),
+  },
+  {
+    path: "/sss",
+    element: <SS />,
   },
 ]);
 const Approuter = () => {
